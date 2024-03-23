@@ -33,7 +33,7 @@ public class AzureStorageServive {
 
     public String uploadFile(String fileName, InputStream inputStream, long length, String type) {
         BlobClient client = containerClient().getBlobClient(fileName);
-        BlobHttpHeaders headers = new BlobHttpHeaders().setContentType("image/jpeg");
+        BlobHttpHeaders headers = new BlobHttpHeaders().setContentType(type);
         BlobParallelUploadOptions options = new BlobParallelUploadOptions(inputStream,length)
                 .setHeaders(headers);
         client.uploadWithResponse(options, null, Context.NONE);
